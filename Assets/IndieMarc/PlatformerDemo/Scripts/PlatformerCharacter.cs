@@ -41,7 +41,10 @@ namespace IndieMarc.Platformer
 
         [Header("Parts")]
         public GameObject hold_hand;
-        
+
+        [Header("Sound Effects")]
+        public Gamekit2D.RandomAudioPlayer footstepAudioPlayer;
+
         private Rigidbody2D rigid;
         private Animator animator;
         private CapsuleCollider2D capsule_coll;
@@ -92,7 +95,7 @@ namespace IndieMarc.Platformer
 
         void Start()
         {
-
+            //anim = gameObject.GetComponent<Animator>();
         }
 
         //Handle physics
@@ -148,6 +151,16 @@ namespace IndieMarc.Platformer
             animator.SetBool("Crouch", IsCrouching());
             animator.SetFloat("Speed", move.magnitude);
             animator.SetBool("Hold", GetHoldingItem() != null);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (this.name == "Character_red")
+                    animator.Play("red_action");
+                else if (this.name == "Character_blue")
+                    animator.Play("blue_action");
+                else if (this.name == "Character_green")
+                    animator.Play("green_action");
+            }
         }
 
         private void LateUpdate()
@@ -306,6 +319,7 @@ namespace IndieMarc.Platformer
 
         public Vector3 GetMove()
         {
+            PlayFootstep();
             return move;
         }
 
@@ -371,6 +385,13 @@ namespace IndieMarc.Platformer
             PlatformerCharacter[] list = new PlatformerCharacter[character_list.Count];
             character_list.Values.CopyTo(list, 0);
             return list;
+        }
+
+        public void PlayFootstep()
+        {
+            footstepAudioPlayer.PlayRandomSound(null);
+            var footstepPosition = transform.position;
+            footstepPosition.z -= 1;
         }
     }
 
