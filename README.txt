@@ -31,7 +31,7 @@ How to view project in Unity editor (not required to play game):
 Step 1: Install Unity editor from https://unity3d.com/unity/editor, if not already installed.
 Step 2: Download the Assets folder from https://github.com/EmeraldGuardian/Prismatic-2D, if not already downloaded from OWL submission.
 Step 3: Create a new project in Unity called Prismatic, template: 2D
-Step 4: Link the asset folder under Add Asset Package section.
+Step 4: Copy over our Assets folder to replace the generated Assets folder.
 Step 5: Profit, now you can look at all of the files used.
 
 Within the Assets folder on the Unity project, you may now look at all scripts, animations, sprites, and scenes that were created/used for the production of this game demo.
